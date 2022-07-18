@@ -25,10 +25,15 @@ jobs:
         uses: actions/setup-node@v3.4.1
         with:
           node-version: 16.x
+          
+      - name: Test Build
+        run: yarn build
+      
+      - name: Semantic Release
+      - run: npx semantic-release
         
       - name: ⚙️ Build/Release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:
           github_token: ${{ secrets.github_token }}
-          # Only create a new release if the pull-request starts with feature/* or fix/*
           release: true
