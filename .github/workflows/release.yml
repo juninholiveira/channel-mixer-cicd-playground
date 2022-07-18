@@ -26,6 +26,9 @@ jobs:
         with:
           node-version: 16.x
           
+      - name: Install Yarn
+        run: yarn
+          
       - name: Test Build
         run: yarn run build
       
