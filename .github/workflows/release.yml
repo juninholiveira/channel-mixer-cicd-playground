@@ -1,16 +1,14 @@
 name: 📦 Release
 
 on:
-  pull_request:
+  push:
     branches:
-      - master
-    types:
-      - closed
+      - main
       
 jobs:
   release:
     name: 🛠️ Build
-    if: github.event.pull_request.merged == true
+    #if: github.event.pull_request.merged == true
     #if: ${{ startsWith(github.ref, 'refs/heads/feature/') || startsWith(github.ref, 'refs/heads/fix/') }}
 
     runs-on: ${{ matrix.os }}
