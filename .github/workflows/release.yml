@@ -1,0 +1,36 @@
+name: 📦 Release
+
+on:
+  pull_request:
+    branches:
+      - master
+    types:
+      - closed
+      
+jobs:
+  release:
+    name: 🛠️ Build
+    if: github.event.pull_request.merged == true
+    #if: ${{ startsWith(github.ref, 'refs/heads/feature/') || startsWith(github.ref, 'refs/heads/fix/') }}
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [windows-latest]
+          
+    steps:
+      - name: 🎟️ Checkout Repository
+        uses: actions/checkout@v3
+          
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.4.1
+        with:
+          node-version: 16.x
+        
+      - name: ⚙️ Build/Release Electron app
+        uses: samuelmeuli/action-electron-builder@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          # Only create a new release if the pull-request starts with feature/* or fix/*
+          release: true
