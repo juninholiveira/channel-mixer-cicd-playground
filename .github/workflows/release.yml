@@ -27,7 +27,7 @@ jobs:
           node-version: 16.x
           
       - name: Test Build
-        run: yarn build
+        run: yarn run build
       
       - name: Semantic Release
         run: npx semantic-release
