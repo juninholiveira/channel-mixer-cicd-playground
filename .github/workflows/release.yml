@@ -24,10 +24,10 @@ jobs:
       - name: Bump Version and Push Tag
         id: tag_bump
         uses: anothrNick/github-tag-action@1.39.0
-        with:
-          github_token: ${{ secrets.github_token }}
-          default_bump: none
-          with_v: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_token }}
+          DEFAULT_BUMP: none
+          WITH_V: true
           
       - name: ⚙️ Build/Release Electron app
         uses: samuelmeuli/action-electron-builder@v1
