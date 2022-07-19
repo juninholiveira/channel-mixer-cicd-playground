@@ -1,0 +1,25 @@
+name: 📦 Bump
+
+on:
+  push:
+    branches:
+      - main
+      
+jobs:
+  bump:
+    name: Bump
+
+    runs-on: ubuntu-latest
+          
+    steps:
+      - name: 🎟️ Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
+          
+      - name: Conventional Changelog Action
+        id: tag_bump
+        uses: TriPSs/conventional-changelog-action@v3
+        with:
+          github-token: ${{ secrets.github_token }}
+          release-count: 0
