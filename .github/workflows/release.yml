@@ -27,6 +27,8 @@ jobs:
           fetch_all_tags: true
           default_bump: false
           
+      - run: echo ${{ steps.tag_version.outputs.previous_tag }}
+          
       - name: Set Initial Tag on Repository
         if: ${{ !steps.tag_version.outputs.previous_tag }}
         uses: mathieudutour/github-tag-action@v6.0
