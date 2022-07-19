@@ -4,8 +4,7 @@ on:
   pull-request:
     branches:
       - main
-    types:
-	  - closed
+    types: [closed]
 
 
 jobs:
