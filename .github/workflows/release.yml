@@ -6,12 +6,12 @@ on:
       - main
       
 jobs:
-  release:
-    name: 🛠️ Build
+  bump:
+    name: 🛠️ Bump Version
     #if: github.event.pull_request.merged == true
     #if: ${{ startsWith(github.ref, 'refs/heads/feature/') || startsWith(github.ref, 'refs/heads/fix/') }}
 
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
@@ -43,8 +43,18 @@ jobs:
           github_token: ${{ secrets.github_token }}
           default_bump: false
           
+  release:
+    name: Release
+    if: ${{ steps.tag_version.outputs.new_tag != steps.tag_version.outputs.previous_tag }}
+  
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      matrix:
+        os: [windows-latest]
+        
+    steps:
       - name: ⚙️ Build/Release Electron app
-        if: ${{ steps.tag_version.outputs.new_tag != steps.tag_version.outputs.previous_tag }}
         uses: samuelmeuli/action-electron-builder@v1
         with:
           github_token: ${{ secrets.github_token }}
