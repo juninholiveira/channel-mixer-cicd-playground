@@ -44,6 +44,7 @@ jobs:
           default_bump: false
           
       - name: ⚙️ Build/Release Electron app
+        if: ${{ steps.tag_version.outputs.new_tag != steps.tag_version.outputs.previous_tag }}
         uses: samuelmeuli/action-electron-builder@v1
         with:
           github_token: ${{ secrets.github_token }}
