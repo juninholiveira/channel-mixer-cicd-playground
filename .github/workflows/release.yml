@@ -7,15 +7,9 @@ on:
       
 jobs:
   bump:
-    name: Bump Version
-    #if: github.event.pull_request.merged == true
-    #if: ${{ startsWith(github.ref, 'refs/heads/feature/') || startsWith(github.ref, 'refs/heads/fix/') }}
+    name: Release
 
-    runs-on: ubuntu-latest
-    
-    outputs:
-      new_tag: ${{ steps.tag_version.outputs.new_tag }}
-      previous_tag: ${{ steps.tag_version.outputs.previous_tag }}
+    runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
@@ -24,21 +18,6 @@ jobs:
     steps:
       - name: 🎟️ Checkout Repository
         uses: actions/checkout@v3
-        #with:
-          #fetch-depth: 0 # Required due to the way Git works, without it this action won't be able to find any or the correct tags
-        
-      #- name: Get Previous tag
-        #id: previoustag
-        #uses: WyriHaximus/github-action-get-previous-tag@v1
-        #with:
-          #fallback: 1.0.0 # Optional fallback tag to use when no tag can be found
-        
-      #- name: Bump release version
-        #id: bump_version
-        #uses: christian-draeger/increment-semantic-version@1.0.2
-        #with:
-          #current-version: ${{ steps.previoustag.outputs.tag }}
-          #version-fragment: 'feature'
           
       - name: Bump Version and Push Tag
         id: tag_version
@@ -47,21 +26,9 @@ jobs:
           github_token: ${{ secrets.github_token }}
           default_bump: false
           
-  release:
-    name: Release
-    
-    needs: bump
-    if: ${{ needs.bump.outputs.new_tag != needs.bump.outputs.previous_tag }}
-  
-    runs-on: ${{ matrix.os }}
-    
-    strategy:
-      matrix:
-        os: [windows-latest]
-        
-    steps:
       - name: ⚙️ Build/Release Electron app
         uses: samuelmeuli/action-electron-builder@v1
+        if: ${{ steps.tag_version.outputs.new_tag }}
         with:
           github_token: ${{ secrets.github_token }}
           release: true
