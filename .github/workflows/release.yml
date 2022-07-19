@@ -25,7 +25,7 @@ jobs:
           release-count: 0
       
       - name: ⚙️ Build/Release Electron app
-        uses: samuelmeuli/action-electron-builder@v1.6
+        uses: samuelmeuli/action-electron-builder@v1
         if: ${{ steps.tag_bump.outputs.tag }}
         with:
           github_token: ${{ secrets.github_token }}
