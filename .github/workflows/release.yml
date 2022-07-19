@@ -28,15 +28,6 @@ jobs:
         #uses: WyriHaximus/github-action-get-previous-tag@v1
         #with:
           #fallback: 1.0.0 # Optional fallback tag to use when no tag can be found
-          
-      - name: 🗃️ Cache Yarn
-        uses: c-hive/gha-yarn-cache@v2
-          
-      - name: 🧪 Install Dependencies
-        run: yarn
-          
-      - name: Test Build
-        run: yarn run build
         
       #- name: Bump release version
         #id: bump_version
@@ -56,7 +47,7 @@ jobs:
         run: echo ${{ steps.tag_version.outputs.new_tag }}
         
       - name: New Changelog
-        run: echo ${{ steps.tag_version.outputs.new_tag }}
+        run: echo ${{ steps.tag_version.outputs.changelog }}
         
       - name: ⚙️ Build/Release Electron app
         uses: samuelmeuli/action-electron-builder@v1
