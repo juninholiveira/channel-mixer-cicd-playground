@@ -26,6 +26,9 @@ jobs:
         uses: TriPSs/conventional-changelog-action@v3
         with:
           github-token: ${{ secrets.github_token }}
+          output_file: false
+          skip-version-file: true
+          skip-commit: true
           
       - name: ⚙️ Build/Release Electron app
         uses: samuelmeuli/action-electron-builder@v1
