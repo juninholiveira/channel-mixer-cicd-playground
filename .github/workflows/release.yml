@@ -1,4 +1,4 @@
-name: 📦 Bump
+name: 📦 Release
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
       - main
       
 jobs:
-  bump:
-    name: Bump
+  release:
+    name: Release
 
     runs-on: ubuntu-latest
           
