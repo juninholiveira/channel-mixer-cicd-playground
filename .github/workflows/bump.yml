@@ -1,0 +1,29 @@
+name: 📦 Bump
+
+on:
+  pull-request:
+    branches:
+      - main
+    types:
+	  - closed
+
+
+jobs:
+  bump:
+    name: Bump
+    if: github.event.pull_request.merged == true
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🎟️ Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
+
+      - name: Conventional Changelog Action
+        id: tag_bump
+        uses: TriPSs/conventional-changelog-action@v3
+        with:
+          github-token: ${{ secrets.github_token }}
+          release-count: 0
