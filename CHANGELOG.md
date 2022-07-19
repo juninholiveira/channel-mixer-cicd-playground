@@ -6,6 +6,7 @@
 * New Cool Feature ([3b608c2](https://github.com/juninholiveira/channel-mixer-cicd-playground/commit/3b608c281672c0143e93515dd6e1b9f2eae9c89c))
 * New Feature 10 ([8d648b1](https://github.com/juninholiveira/channel-mixer-cicd-playground/commit/8d648b1d7ecedee74d07251452b1aac4a792a490))
 * new feature 11 ([#4](https://github.com/juninholiveira/channel-mixer-cicd-playground/issues/4)) ([b435faa](https://github.com/juninholiveira/channel-mixer-cicd-playground/commit/b435faa0a686727ed45d5450cd9eb928c7654b4c))
+* New Feature 12 ([#5](https://github.com/juninholiveira/channel-mixer-cicd-playground/issues/5)) ([98f6269](https://github.com/juninholiveira/channel-mixer-cicd-playground/commit/98f6269e686b20165c3fabce2e73e44f5fd66590))
 * New Feature 3 ([e4c348c](https://github.com/juninholiveira/channel-mixer-cicd-playground/commit/e4c348cd3f3914a1f58704c7c29a63edb420cc2c))
 * New Feature 7 ([#1](https://github.com/juninholiveira/channel-mixer-cicd-playground/issues/1)) ([db3f3ac](https://github.com/juninholiveira/channel-mixer-cicd-playground/commit/db3f3acf93cfd596557c9b31a355cee15751bbb6))
 * New Lines on App.tsx ([18a0385](https://github.com/juninholiveira/channel-mixer-cicd-playground/commit/18a0385f5884bd82215e70311916acadcbd0d605))
