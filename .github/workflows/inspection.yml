@@ -2,9 +2,11 @@ name: 🔍 Code Inspection
 
 on:
   workflow_call:
-  push:
+  #push:
+    #branches-ignore:
+      #- main
   pull_request:
-    types: [opened, reopened]
+    #types: [opened, reopened]
 
 jobs:
   inspection:
