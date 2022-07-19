@@ -41,14 +41,8 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.0
         with:
           github_token: ${{ secrets.github_token }}
-          #default_bump: false
+          default_bump: false
           
-      - name: New Tag Version
-        run: echo ${{ steps.tag_version.outputs.new_tag }}
-        
-      - name: New Changelog
-        run: echo ${{ steps.tag_version.outputs.changelog }}
-        
       - name: ⚙️ Build/Release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:
