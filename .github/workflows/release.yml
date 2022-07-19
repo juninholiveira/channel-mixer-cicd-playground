@@ -22,13 +22,14 @@ jobs:
           fetch-depth: '0'
           
       - name: Conventional Changelog Action
+        id: tag_bump
         uses: TriPSs/conventional-changelog-action@v3
         with:
           github-token: ${{ secrets.github_token }}
           
       - name: ⚙️ Build/Release Electron app
         uses: samuelmeuli/action-electron-builder@v1
-        if: ${{ needs.bump.outputs.new_tag }}
+        if: ${{ steps.tag_bump.outputs.tag }}
         with:
           github_token: ${{ secrets.github_token }}
           release: true
