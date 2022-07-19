@@ -7,7 +7,30 @@ on:
       
 jobs:
   bump:
+    name: Bump
+    
+    outputs:
+      new_tag: ${{ steps.tag_bump.outputs.new_tag }}
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 🎟️ Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
+    
+      - name: Bump Version and Push Tag
+        id: tag_bump
+        uses: anothrNick/github-tag-action@1.39.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_token }}
+          DEFAULT_BUMP: none
+          WITH_V: true
+
+  release:
     name: Release
+    needs: bump
 
     runs-on: ${{ matrix.os }}
 
@@ -18,20 +41,10 @@ jobs:
     steps:
       - name: 🎟️ Checkout Repository
         uses: actions/checkout@v3
-        with:
-          fetch-depth: '0'
-          
-      - name: Bump Version and Push Tag
-        id: tag_bump
-        uses: anothrNick/github-tag-action@1.39.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.github_token }}
-          DEFAULT_BUMP: none
-          WITH_V: true
           
       - name: ⚙️ Build/Release Electron app
         uses: samuelmeuli/action-electron-builder@v1
-        if: ${{ steps.tag_bump.outputs.new_tag }}
+        if: ${{ needs.bump.outputs.new_tag }}
         with:
           github_token: ${{ secrets.github_token }}
           release: true
