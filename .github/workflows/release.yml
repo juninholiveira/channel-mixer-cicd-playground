@@ -7,11 +7,15 @@ on:
       
 jobs:
   bump:
-    name: 🛠️ Bump Version
+    name: Bump Version
     #if: github.event.pull_request.merged == true
     #if: ${{ startsWith(github.ref, 'refs/heads/feature/') || startsWith(github.ref, 'refs/heads/fix/') }}
 
     runs-on: ubuntu-latest
+    
+    outputs:
+      new_tag: ${{ steps.tag_version.outputs.new_tag }}
+      previous_tag: ${{ steps.tag_version.outputs.previous_tag }}
 
     strategy:
       matrix:
@@ -45,7 +49,9 @@ jobs:
           
   release:
     name: Release
-    if: ${{ steps.tag_version.outputs.new_tag != steps.tag_version.outputs.previous_tag }}
+    
+    needs: bump
+    if: ${{ needs.bump.outputs.new_tag != needs.bump.outputs.previous_tag }}
   
     runs-on: ${{ matrix.os }}
     
