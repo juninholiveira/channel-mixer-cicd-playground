@@ -4,29 +4,30 @@ on:
   push:
     branches:
       - main
-      
+
 jobs:
   release:
     name: Release
 
     runs-on: ubuntu-latest
-          
+
     steps:
       - name: 🎟️ Checkout Repository
         uses: actions/checkout@v3
         with:
           fetch-depth: '0'
-          
+
       - name: Conventional Changelog Action
         id: tag_bump
         uses: TriPSs/conventional-changelog-action@v3
         with:
           github-token: ${{ secrets.github_token }}
           release-count: 0
-      
+
       - name: ⚙️ Build/Release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         if: ${{ steps.tag_bump.outputs.tag }}
         with:
           github_token: ${{ secrets.github_token }}
+		  package_root: '/home/runner/work/channel-mixer-cicd-playground/channel-mixer-cicd-playground/'
           release: true
