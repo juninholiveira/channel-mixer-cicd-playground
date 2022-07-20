@@ -1,16 +1,14 @@
 name: 📦 Bump
 
 on:
-  pull_request:
+  push:
     branches:
       - main
-    types: [closed]
 
 
 jobs:
   bump:
     name: Bump
-    if: github.event.pull_request.merged == true
 
     runs-on: ubuntu-latest
 
@@ -18,7 +16,8 @@ jobs:
       - name: 🎟️ Checkout Repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: '0'
+          fetch-depth: 0
+		  persist-credentials: false
 
       - name: Conventional Changelog Action
         id: tag_bump
@@ -26,3 +25,4 @@ jobs:
         with:
           github-token: ${{ secrets.github_token }}
           release-count: 0
+		  skip-ci: false
