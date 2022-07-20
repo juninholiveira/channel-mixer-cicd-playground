@@ -19,7 +19,7 @@ jobs:
         with:
           fetch-depth: '0'
           persist-credentials: 'false'
-		  token: ${{ secrets.PAT }}
+          token: ${{ secrets.PAT }}
 
       - name: Conventional Changelog Action
         id: tag_bump
