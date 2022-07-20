@@ -1,4 +1,14 @@
-# 0.1.0 (2022-07-20)
+# [0.2.0](https://github.com/juninholiveira/channel-mixer-cicd-playground/compare/v0.1.0...v0.2.0) (2022-07-20)
+
+
+### Features
+
+* teste ([5fd7014](https://github.com/juninholiveira/channel-mixer-cicd-playground/commit/5fd70146c35d67f669950f974969efb458c22655))
+* teste 2 ([5c1ad1c](https://github.com/juninholiveira/channel-mixer-cicd-playground/commit/5c1ad1cea8753f7585fc71c733b8a70ad8abc193))
+
+
+
+# [0.1.0](https://github.com/juninholiveira/channel-mixer-cicd-playground/compare/db3f3acf93cfd596557c9b31a355cee15751bbb6...v0.1.0) (2022-07-20)
 
 
 ### Features
