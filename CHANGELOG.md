@@ -1,3 +1,12 @@
+# [0.4.0](https://github.com/juninholiveira/channel-mixer-cicd-playground/compare/v0.3.0...v0.4.0) (2022-07-20)
+
+
+### Features
+
+* Cool Feature BamBam ([#9](https://github.com/juninholiveira/channel-mixer-cicd-playground/issues/9)) ([25aeebd](https://github.com/juninholiveira/channel-mixer-cicd-playground/commit/25aeebd97feb56c3a71fbd994fbb41ccf684fd37))
+
+
+
 # [0.3.0](https://github.com/juninholiveira/channel-mixer-cicd-playground/compare/v0.2.0...v0.3.0) (2022-07-20)
 
 
