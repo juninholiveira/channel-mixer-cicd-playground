@@ -34,5 +34,5 @@ jobs:
         uses: samuelmeuli/action-electron-builder@v1
         #if: ${{ steps.tag_bump.outputs.tag }}
         with:
-          github_token: ${{ secrets.github_token }}
+          github_token: ${{ secrets.PAT }}
           release: true
