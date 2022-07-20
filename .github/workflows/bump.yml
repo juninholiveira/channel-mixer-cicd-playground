@@ -1,10 +1,9 @@
-name: 📦 Bump
+name: 📈 Bump
 
 on:
   push:
     branches:
       - main
-
 
 jobs:
   bump:
@@ -17,7 +16,6 @@ jobs:
       - name: 🎟️ Checkout Repository
         uses: actions/checkout@v3
         with:
-          #token: ${{ secrets.PAT }}
           fetch-depth: '0'
           persist-credentials: 'false'
 
@@ -26,7 +24,5 @@ jobs:
         uses: TriPSs/conventional-changelog-action@v3
         with:
           github-token: ${{ secrets.PAT }}
-          git-user-name: ${{ github.event.pusher.name }}
-          git-user-email: 'teste@gmail.com'
           release-count: 0
           skip-ci: false
