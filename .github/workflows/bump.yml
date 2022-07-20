@@ -9,6 +9,7 @@ on:
 jobs:
   bump:
     name: Bump
+    if: startsWith( github.event.head_commit.message, 'chore(release)' ) != true
 
     runs-on: ubuntu-latest
 
@@ -23,6 +24,6 @@ jobs:
         id: tag_bump
         uses: TriPSs/conventional-changelog-action@v3
         with:
-          github-token: ${{ secrets.github_token }}
+          github-token: ${{ secrets.PAT }}
           release-count: 0
           skip-ci: false
