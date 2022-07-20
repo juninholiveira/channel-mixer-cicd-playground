@@ -26,5 +26,7 @@ jobs:
         uses: TriPSs/conventional-changelog-action@v3
         with:
           github-token: ${{ secrets.github_token }}
+          git-user-name: ${{ github.event.pusher.name }}
+          git-user-email: 'teste@gmail.com'
           release-count: 0
           skip-ci: false
