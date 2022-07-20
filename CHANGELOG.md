@@ -1,3 +1,19 @@
+# [0.3.0](https://github.com/juninholiveira/channel-mixer-cicd-playground/compare/v0.2.0...v0.3.0) (2022-07-20)
+
+
+### Bug Fixes
+
+* tab problem ([1b941e1](https://github.com/juninholiveira/channel-mixer-cicd-playground/commit/1b941e1f77a651ce922c84ac8f19c2fe518fb61d))
+
+
+### Features
+
+* teste 3 ([bb579e4](https://github.com/juninholiveira/channel-mixer-cicd-playground/commit/bb579e4080816317c00e3090af6cf0f598410d4e))
+* teste 5 ([3e6947e](https://github.com/juninholiveira/channel-mixer-cicd-playground/commit/3e6947e1ae35fffd09d03d60bbe8ab67ca85da0c))
+* token ([d103482](https://github.com/juninholiveira/channel-mixer-cicd-playground/commit/d10348267246e482d22c6af423818b33ee170ec1))
+
+
+
 # [0.2.0](https://github.com/juninholiveira/channel-mixer-cicd-playground/compare/v0.1.0...v0.2.0) (2022-07-20)
 
 
