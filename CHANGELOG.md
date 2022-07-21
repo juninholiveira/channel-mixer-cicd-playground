@@ -1,4 +1,13 @@
-# 0.1.0 (2022-07-21)
+# [0.2.0](https://github.com/juninholiveira/channel-mixer-cicd-playground/compare/v0.1.0...v0.2.0) (2022-07-21)
+
+
+### Features
+
+* Update App.tsx teste ([#11](https://github.com/juninholiveira/channel-mixer-cicd-playground/issues/11)) ([f0c71a3](https://github.com/juninholiveira/channel-mixer-cicd-playground/commit/f0c71a3e1fca622cf3ca8fc324f1517398e6ccae))
+
+
+
+# [0.1.0](https://github.com/juninholiveira/channel-mixer-cicd-playground/compare/db3f3acf93cfd596557c9b31a355cee15751bbb6...v0.1.0) (2022-07-21)
 
 
 ### Bug Fixes
