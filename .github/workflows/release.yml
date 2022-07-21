@@ -8,6 +8,8 @@ on:
 jobs:
   release:
     name: Release
+
+    # Only run if the commit starts with "chore(release)", meaning it comes from the Conventional Changelog Action
     if: startsWith( github.event.head_commit.message, 'chore(release)' )
 
     runs-on: ${{ matrix.os }}
@@ -19,20 +21,9 @@ jobs:
     steps:
       - name: 🎟️ Checkout Repository
         uses: actions/checkout@v3
-        #with:
-          #persist-credentials: 'false'
-          #fetch-depth: '0'
-
-      #- name: Conventional Changelog Action
-        #id: tag_bump
-        #uses: TriPSs/conventional-changelog-action@v3
-        #with:
-          #github-token: ${{ secrets.github_token }}
-          #release-count: 0
 
       - name: ⚙️ Build/Release Electron app
         uses: samuelmeuli/action-electron-builder@v1
-        #if: ${{ steps.tag_bump.outputs.tag }}
         with:
           github_token: ${{ secrets.github_token }}
           release: true

@@ -4,13 +4,17 @@ on:
   push:
     branches:
       - main
+
+    # Pushes coming to main from the ConventionalChangelog action will only modify those files, so we exclude them from the trigger to avoid an infinite loop
     paths-ignore:
       - 'package.json'
       - 'CHANGELOG.md'
 
 jobs:
   bump:
-    name: Bump
+    name: 📈 Bump
+
+    # A second layer of security to prevent the Bump action from running again on a release commit (avoiding infinite loop)
     if: startsWith( github.event.head_commit.message, 'chore(release)' ) != true
 
     runs-on: ubuntu-latest

@@ -4,10 +4,10 @@ on:
   workflow_call:
   push:
   pull_request:
-    #types: [opened, reopened]
 
 jobs:
   inspection:
+    name: 🔍 Inspection
     runs-on: ubuntu-latest
 
     steps:
