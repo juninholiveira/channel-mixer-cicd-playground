@@ -25,7 +25,7 @@ jobs:
         id: release_drafter
         uses: release-drafter/release-drafter@v5
         env:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   packaging:
     name: 📦 Packaging
