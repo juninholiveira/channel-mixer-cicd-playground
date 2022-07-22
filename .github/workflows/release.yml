@@ -49,14 +49,30 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           release: false
 
-  upload:
-    name: 📬 Upload Artifacts
+      - name: 💽 Compact Artifacts
+        run: tar -cvf electron_build.tar
+
+      - name: 📤 Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: electron_build_artifact
+          path: dist/
+          if-no-files-found: error
+
+  release:
+    name: 🗃️ Release Artifacts
     needs: [preparation, packaging]
 
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📤 Upload Artifacts to Release Draft
+      - name: 📥 Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: electron_build_artifact
+          path: dist/
+
+      - name: 📌 Attach Artifacts to Release Draft
         uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
