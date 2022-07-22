@@ -47,5 +47,5 @@ jobs:
           file: "dist/*.exe;dist/*.blockmap"
           overwrite: true
           draft: true
-		  verbose: true
-		  release_id: ${{ steps.release_drafter.outputs.id }}
+          verbose: true
+          release_id: ${{ steps.release_drafter.outputs.id }}
