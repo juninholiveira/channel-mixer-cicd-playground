@@ -73,13 +73,26 @@
     "directories": {
       "buildResources": "public"
     },
-    "win": {
-      "target": [
-        "portable"
-      ]
-    },
-    "portable": {
-      "artifactName": "${productName}_${env.RESOLVED_VERSION}_${os}_portable.${ext}"
-    }
+	"mac": {
+		"target": "dmg"
+	  },
+	  "win": {
+		"target": [
+		  "nsis",
+		  "portable"
+		]
+	  },
+	  "linux": {
+		"target": "deb"
+	  },
+	  "nsis": {
+		"artifactName": "${productName}_${env.RESOLVED_VERSION}_${os}_setup.${ext}",
+		"allowToChangeInstallationDirectory": true,
+		"oneClick": false
+	  },
+	  "portable": {
+		"artifactName": "${productName}_${env.RESOLVED_VERSION}_${os}_portable.${ext}"
+	  }
+
   }
 }
