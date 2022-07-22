@@ -55,6 +55,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    steps:
       - name: 📤 Upload Artifacts to Release Draft
         uses: xresloader/upload-to-github-release@v1
         env:
