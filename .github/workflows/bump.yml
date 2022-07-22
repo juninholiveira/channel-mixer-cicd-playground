@@ -6,30 +6,46 @@ on:
       - main
 
     # Pushes coming to main from the ConventionalChangelog action will only modify those files, so we exclude them from the trigger to avoid an infinite loop
-    paths-ignore:
-      - 'package.json'
-      - 'CHANGELOG.md'
+    # paths-ignore:
+    #   - 'package.json'
+    #   - 'CHANGELOG.md'
 
 jobs:
   bump:
     name: 📈 Bump
 
     # A second layer of security to prevent the Bump action from running again on a release commit (avoiding infinite loop)
-    if: startsWith( github.event.head_commit.message, 'chore(release)' ) != true
+    #if: startsWith( github.event.head_commit.message, 'chore(release)' ) != true
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: 🎟️ Checkout Repository
         uses: actions/checkout@v3
         with:
           fetch-depth: '0'
-          persist-credentials: 'false'
+        #   persist-credentials: 'false'
 
-      - name: Conventional Changelog Action
-        id: tag_bump
-        uses: TriPSs/conventional-changelog-action@v3
+    #   - name: Conventional Changelog Action
+    #     id: tag_bump
+    #     uses: TriPSs/conventional-changelog-action@v3
+    #     with:
+    #       github-token: ${{ secrets.PAT }}
+    #       release-count: 0
+    #       skip-ci: false
+
+      - name: Generate Changelog
+        id: release_drafter
+        uses: release-drafter/release-drafter@v5
+        env:
+          github_token: ${{ secrets.github_token }}
         with:
-          github-token: ${{ secrets.PAT }}
-          release-count: 0
-          skip-ci: false
+          disable-autolabeler: false
+
+      - name: ⚙️ Build/Release Electron app
+        uses: samuelmeuli/action-electron-builder@v1
+        env:
+          RESOLVED_VERSION: ${{ steps.release_drafter.outputs.tag_name }}
+        with:
+          github_token: ${{ secrets.github_token }}
+          release: true

@@ -62,7 +62,7 @@
   },
   "build": {
     "appId": "com.leandrojunior.channel-mixer",
-    "artifactName": "${productName}_${version}_${os}.${ext}",
+    "artifactName": "${productName}_${env.RESOLVED_VERSION}_${os}.${ext}",
     "productName": "Channel Mixer",
     "files": [
       "build/**/*",
@@ -86,12 +86,12 @@
       "target": "deb"
     },
     "nsis": {
-      "artifactName": "${productName}_${version}_${os}_setup.${ext}",
+      "artifactName": "${productName}_${env.RESOLVED_VERSION}_${os}_setup.${ext}",
       "allowToChangeInstallationDirectory": true,
       "oneClick": false
     },
     "portable": {
-      "artifactName": "${productName}_${version}_${os}_portable.${ext}"
+      "artifactName": "${productName}_${env.RESOLVED_VERSION}_${os}_portable.${ext}"
     }
   }
 }
