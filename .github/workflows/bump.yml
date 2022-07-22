@@ -48,4 +48,4 @@ jobs:
           RESOLVED_VERSION: ${{ steps.release_drafter.outputs.tag_name }}
         with:
           github_token: ${{ secrets.github_token }}
-          release: true
+          release: false
