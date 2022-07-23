@@ -41,6 +41,16 @@ jobs:
       - name: 🎟️ Checkout Repository
         uses: actions/checkout@v3
 
+      - name: 🧮 Setup NodeJS Environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: 🗃️ Install and Cache Dependencies
+        uses: bahmutov/npm-install@v1
+        with:
+          install-command: yarn --frozen-lockfile --network-timeout 600000
+
       - name: 🛠️ Build Electron Artifacts
         uses: samuelmeuli/action-electron-builder@v1
         env:
