@@ -8,6 +8,7 @@ on:
 jobs:
   preparation:
     name: 🎛️ Preparation
+    if: ${{ github.event.label.name == 'bump:major' || github.event.label.name == 'bump:minor' || github.event.label.name == 'bump:patch' }}
 
     runs-on: ubuntu-latest
 
@@ -26,6 +27,15 @@ jobs:
         uses: release-drafter/release-drafter@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🎢 Bump Versions
+        uses: 'phips28/gh-action-bump-version@master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          major-wording:  'chore(major)'
+          minor-wording:  'feat'
+          patch-wording:  'fix'
 
   packaging:
     name: 📦 Packaging
@@ -60,8 +70,8 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           release: false
 
-      #- name: 💽 Compact Artifacts
-        #run: tar -cvf electron_build.tar /dist/
+    #   - name: 💽 Compact Artifacts
+    #     run: tar -cvf electron_build.tar /dist/
 
       - name: 📤 Upload Artifacts
         uses: actions/upload-artifact@v3
@@ -83,8 +93,8 @@ jobs:
           name: electron_build_artifact
           path: dist/
 
-      #- name: 💽 Unzip Artifacts
-        #run: tar -xvf electron_build.tar /dist/
+    #   - name: 💽 Unzip Artifacts
+    #     run: tar -xvf electron_build.tar /dist/
 
       - name: 📌 Attach Artifacts to Release Draft
         uses: xresloader/upload-to-github-release@v1

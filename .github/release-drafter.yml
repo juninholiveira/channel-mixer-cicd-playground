@@ -1,19 +1,28 @@
-name-template: 'v$RESOLVED_VERSION 🌈'
+name-template: 'Channel Mixer v$RESOLVED_VERSION 💚'
 
 tag-template: 'v$RESOLVED_VERSION'
 
 categories:
   - title: '🚀 Features'
     labels:
+      - 'bump:minor'
       - 'feature'
       - 'enhancement'
+
   - title: '🐛 Bug Fixes'
     labels:
+      - 'bump:patch'
       - 'fix'
       - 'bugfix'
       - 'bug'
+
   - title: '🧰 Maintenance'
-    label: 'chore'
+    labels:
+      - 'bump:major'
+	  - 'chore'
+
+  - title: '⚡ Performance Improvements'
+	  - 'perf'
 
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 
@@ -22,13 +31,13 @@ change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add
 version-resolver:
   major:
     labels:
-      - 'chore'
+      - 'bump:major'
   minor:
     labels:
-      - 'feature'
+      - 'bump:minor'
   patch:
     labels:
-      - 'fix'
+      - 'bump:patch'
   default: patch
 
 template: |
