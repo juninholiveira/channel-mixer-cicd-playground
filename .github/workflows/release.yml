@@ -1,14 +1,19 @@
 name: 📦 Release
 
 on:
-  push:
+#   push:
+#     branches:
+#       - main
+  pull-request:
     branches:
       - main
+    types:
+      - closed
 
 jobs:
   preparation:
     name: 🎛️ Preparation
-    if: ${{ github.event.label.name == 'bump:major' || github.event.label.name == 'bump:minor' || github.event.label.name == 'bump:patch' }}
+    if: ${{ (github.event.pull_request.merged == true) && ( (contains(github.event.pull_request.labels.*.name, 'bump:major')) || (contains(github.event.pull_request.labels.*.name, 'bump:minor')) || (contains(github.event.pull_request.labels.*.name, 'bump:patch')) ) }}
 
     runs-on: ubuntu-latest
 
