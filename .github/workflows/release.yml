@@ -49,8 +49,8 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           release: false
 
-      - name: 💽 Compact Artifacts
-        run: tar -cvf electron_build.tar /dist/
+      #- name: 💽 Compact Artifacts
+        #run: tar -cvf electron_build.tar /dist/
 
       - name: 📤 Upload Artifacts
         uses: actions/upload-artifact@v3
@@ -72,8 +72,8 @@ jobs:
           name: electron_build_artifact
           path: dist/
 
-      - name: 💽 Unzip Artifacts
-        run: tar -xvf electron_build.tar /dist/
+      #- name: 💽 Unzip Artifacts
+        #run: tar -xvf electron_build.tar /dist/
 
       - name: 📌 Attach Artifacts to Release Draft
         uses: xresloader/upload-to-github-release@v1
