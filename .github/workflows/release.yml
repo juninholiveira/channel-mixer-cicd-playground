@@ -47,7 +47,7 @@ jobs:
           node-version: 16
 
       - name: 🗃️ Install and Cache Dependencies
-        uses: bahmutov/npm-install@v1
+        uses: bahmutov/npm-install@v1.8.17
         with:
           install-command: yarn --frozen-lockfile --network-timeout 600000
 
