@@ -32,37 +32,8 @@ jobs:
         uses: release-drafter/release-drafter@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    #   - name: 🎢 Bump Versions
-    #     uses: 'phips28/gh-action-bump-version@master'
-    #     env:
-    #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #     with:
-    #       major-wording:  'chore(major)'
-    #       minor-wording:  'feat'
-    #       patch-wording:  'fix'
-
-      - name: 🎢 Update package.json Version
-        uses: jossef/action-set-json-field@v2
         with:
-          file: package.json
-          field: version
-          value: ${{ steps.release_drafter.outputs.tag_name }}
-
-      - name: ⌨️ Commit Files
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add -A
-          git commit -m "chore(package.json): bump version ${{ steps.release_drafter.outputs.tag_name }} [skip ci]"
-          git tag ${{ steps.release_drafter.outputs.tag_name }}
-
-      - name: 📨 Push Changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          tags: true
-          branch: main
+          publish: true
 
   packaging:
     name: 📦 Packaging
@@ -97,9 +68,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           release: false
 
-    #   - name: 💽 Compact Artifacts
-    #     run: tar -cvf electron_build.tar /dist/
-
       - name: 📤 Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -120,9 +88,6 @@ jobs:
           name: electron_build_artifact
           path: dist/
 
-    #   - name: 💽 Unzip Artifacts
-    #     run: tar -xvf electron_build.tar /dist/
-
       - name: 📌 Attach Artifacts to Release Draft
         uses: xresloader/upload-to-github-release@v1
         env:
@@ -132,3 +97,39 @@ jobs:
           overwrite: true
           draft: true
           release_id: ${{ needs.preparation.outputs.id }}
+
+      - name: 📰 Publish Release
+        uses: eregon/publish-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          release_id: ${{ needs.preparation.outputs.id }}
+
+  bump:
+    name: 🎢 Bump Version
+    needs: [preparation, packaging, release]
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🪜 Bump package.json Version
+        uses: jossef/action-set-json-field@v2
+        with:
+          file: package.json
+          field: version
+          value: ${{ needs.preparation.outputs.tag_name }}
+
+      - name: ⌨️ Commit Files
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit -m "chore(bump): bump version ${{ needs.preparation.outputs.tag_name }} [skip ci]"
+          git tag ${{ needs.preparation.outputs.tag_name }}
+
+      - name: 📨 Push Changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          tags: true
+          branch: main
