@@ -19,6 +19,7 @@ categories:
       - 'chore'
 
   - title: '⚡ Performance Improvements'
+    labels:
       - 'perf'
 
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
