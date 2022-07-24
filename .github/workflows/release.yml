@@ -33,14 +33,37 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 🎢 Bump Versions
-        uses: 'phips28/gh-action-bump-version@master'
+    #   - name: 🎢 Bump Versions
+    #     uses: 'phips28/gh-action-bump-version@master'
+    #     env:
+    #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #     with:
+    #       major-wording:  'chore(major)'
+    #       minor-wording:  'feat'
+    #       patch-wording:  'fix'
+
+      - name: 🎢 Update package.json Version
+        uses: jossef/action-set-json-field@v2
+        with:
+          file: package.json
+          field: version
+          value: ${{ steps.release_drafter.outputs.tag_name }}
+
+      - name: ⌨️ Commit Files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit -m "chore(package.json): bump version ${{ steps.release_drafter.outputs.tag_name }} [skip ci]"
+          git tag ${{ steps.release_drafter.outputs.tag_name }}
+
+      - name: 📨 Push Changes
+        uses: ad-m/github-push-action@v0.6.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          major-wording:  'chore(major)'
-          minor-wording:  'feat'
-          patch-wording:  'fix'
+          tags: true
+          branch: main
 
   packaging:
     name: 📦 Packaging
