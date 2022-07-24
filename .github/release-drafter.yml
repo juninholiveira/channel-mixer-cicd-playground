@@ -1,41 +1,41 @@
-name-template: 'Channel Mixer v$RESOLVED_VERSION 💚'
+name-template: Channel Mixer v$RESOLVED_VERSION 💚
 
-tag-template: 'v$RESOLVED_VERSION'
+tag-template: v$RESOLVED_VERSION
 
 categories:
-  - title: '🚀 Features'
+  - title: 🚀 Features
     labels:
-      - 'bump:minor'
-      - 'feat'
+      - "bump:minor"
+      - feat
 
-  - title: '🐛 Bug Fixes'
+  - title: 🐛 Bug Fixes
     labels:
-      - 'bump:patch'
-      - 'fix'
+      - "bump:patch"
+      - fix
 
-  - title: '🧰 Maintenance'
+  - title: 🧰 Maintenance
     labels:
-      - 'bump:major'
-      - 'chore'
+      - "bump:major"
+      - chore
 
-  - title: '⚡ Performance Improvements'
+  - title: ⚡ Performance Improvements
     labels:
-      - 'perf'
+      - perf
 
-change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
 
 change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
 
 version-resolver:
   major:
     labels:
-      - 'bump:major'
+      - "bump:major"
   minor:
     labels:
-      - 'bump:minor'
+      - "bump:minor"
   patch:
     labels:
-      - 'bump:patch'
+      - "bump:patch"
   default: patch
 
 template: |
