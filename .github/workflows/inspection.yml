@@ -1,12 +1,12 @@
 name: 🕵️‍♂️ Code Inspection
 
 on:
-  workflow_call:
+  # workflow_call:
   push:
     branches:
-      #- main
+      # -  main
       - sdfsdf
-  #pull_request:
+  # pull_request:
 
 jobs:
   inspection:
@@ -47,7 +47,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: 'yarn'
+          cache: yarn
 
       - name: 🗃️ Install and Cache Dependencies
         uses: bahmutov/npm-install@v1.8.15
