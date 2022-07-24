@@ -16,10 +16,10 @@ categories:
   - title: '🧰 Maintenance'
     labels:
       - 'bump:major'
-	  - 'chore'
+      - 'chore'
 
   - title: '⚡ Performance Improvements'
-	  - 'perf'
+      - 'perf'
 
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 
