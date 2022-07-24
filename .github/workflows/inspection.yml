@@ -1,7 +1,8 @@
 name: 🕵️‍♂️ Code Inspection
 
 on:
-  # workflow_call:
+  # eslint-disable-next-line yml/no-empty-mapping-value
+  workflow_call:
   push:
     branches:
       # -  main
