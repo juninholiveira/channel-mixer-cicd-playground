@@ -3,11 +3,11 @@ name: 🕵️‍♂️ Code Inspection
 on:
   # eslint-disable-next-line yml/no-empty-mapping-value
   workflow_call:
-  push:
-    branches:
-      # -  main
-      - sdfsdf
-  # pull_request:
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
 
 jobs:
   inspection:
