@@ -3,7 +3,7 @@ name: Testing Failure
 on:
   push:
     branches:
-      - main
+      - sadfsdf
 
 jobs:
   job1:
