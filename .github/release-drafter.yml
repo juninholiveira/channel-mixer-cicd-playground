@@ -21,9 +21,9 @@ categories:
     labels:
       - perf
 
-change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
-
+change-template: "- $TITLE (#$NUMBER)"
 change-title-escapes: '\<*_&'
+no-changes-template: Well, looks like there is no change! weird... 🤷‍♂️
 
 version-resolver:
   major:
