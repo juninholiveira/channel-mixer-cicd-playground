@@ -27,7 +27,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   inspection:
-    name: 🕵️‍♂️ Inspection
+    name: 🕵️‍♂️ Code Inspection
 
     runs-on: ubuntu-latest
 
