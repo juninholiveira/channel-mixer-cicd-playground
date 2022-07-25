@@ -43,10 +43,6 @@ jobs:
         os: [windows-latest]
 
     steps:
-
-      - run: |
-          exit 1
-
       - name: 🎟️ Checkout Repository
         uses: actions/checkout@v3
 
