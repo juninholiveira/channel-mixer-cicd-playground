@@ -139,7 +139,7 @@ jobs:
           token: ${{ secrets.PAT }}
           commit-message: "chore(bump): bump version ${{ env.VERSION }}"
           committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          # author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           branch: chore/bump-version
           delete-branch: true
           base: main
