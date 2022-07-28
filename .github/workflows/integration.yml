@@ -12,6 +12,7 @@ on:
 jobs:
   validate:
     name: 🖋️ Validate PR Title
+    if: ${{ !startsWith( github.event.pull_request.title, "chore(bump)" ) }}
 
     runs-on: ubuntu-latest
 
@@ -28,6 +29,7 @@ jobs:
 
   inspection:
     name: 🕵️‍♂️ Code Inspection
+    if: ${{ !startsWith( github.event.pull_request.title, "chore(bump)" ) }}
 
     runs-on: ubuntu-latest
 
