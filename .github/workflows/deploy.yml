@@ -136,14 +136,14 @@ jobs:
         id: pull_request
         uses: peter-evans/create-pull-request@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }}
           commit-message: "chore(bump): bump version ${{ env.VERSION }}"
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           branch: chore/bump-version
           delete-branch: true
           base: main
-          title: "chore(bump): bump version ${{ env.VERSION }} [skip ci]"
+          title: "chore(bump): bump version ${{ env.VERSION }}"
           body: |
             Bump version in package.json
             - Bumped to version: ${{ env.VERSION }}
