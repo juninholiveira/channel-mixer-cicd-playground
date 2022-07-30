@@ -138,9 +138,9 @@ jobs:
         with:
           token: ${{ steps.generate-token.outputs.token }}
           commit-message: "ci: bump version to ${{ env.VERSION }}"
-          committer: Automated Version Bump <41898282+github-actions[bot]@users.noreply.github.com>
+          committer: Automated Bump Bot <automated-bump-bot@users.noreply.github.com>
           # committer: GitHub <noreply@github.com>
-          author: Automated Version Bump <41898282+github-actions[bot]@users.noreply.github.com>
+          author: Automated Bump Bot <automated-bump-bot@users.noreply.github.com>
           # author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           branch: ci/bump-version
           delete-branch: true
