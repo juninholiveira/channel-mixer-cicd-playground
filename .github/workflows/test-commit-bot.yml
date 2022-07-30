@@ -1,7 +1,10 @@
 name: Test Commit Bot
 
 on:
-  push
+  push:
+    branches:
+      - test
+      - main
 
 jobs:
   validate:
@@ -22,4 +25,4 @@ jobs:
               -H "Authorization: token ${TOKEN}" \
               -H "Accept: application/vnd.github.v3+json" \
               https://api.github.com/repos/juninholiveira/channel-mixer-cicd-playground/contents/test-file \
-              -d '{"message":"message","content":"Y29udGVudA==","branch":"main"}'
+              -d '{"message":"message","content":"Y29udGVudA==","branch":"test"}'
